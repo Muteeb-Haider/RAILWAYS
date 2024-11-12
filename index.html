@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="pics/screens/thumbnail.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Railways Game</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container" id="menu">
+        <div class="railway">
+            <img src="pics/menu_screen.png" alt="Menu screen illustration">
+        </div>
+        <div class="input-box">
+            <input placeholder="WHO ARE YOU?" type="text" id="playerName" required>
+            <p id="nameError" class="error hidden">Please enter your name.</p>
+        </div>
+        <div class="difficulty">
+            <h2>SET THE DIFFICULTY!</h2>
+            <button class="selected" id="easy">5 X 5<br>EASY</button>
+            <button id="hard">7 X 7<br>HARD</button>
+        </div>
+        <div id="continueSavedGameContainer"></div>
+        <div class="buttons">
+
+            <button class="rules" id="showRules">RULES</button>
+            <button class="start-game" id="startGame">START GAME</button>
+            <button class="leaderboard" id="showLeaderboardButton">LEADERBOARD</button>
+        </div>
+        <div class="railway">
+            <img alt="Railway track illustration" height="100" src="pics/rails.png" width="400">
+        </div>
+    </div>
+    <div id="game" class="hidden">
+        <div class="left-panel">
+            <div class="railway" id="logo">
+                <img src="pics/menu_screen.png" alt="Menu screen illustration">
+            </div>
+            <div id="playerInfo">
+                <h2>ROUTE DESIGNER:</h2>
+                <h2 id="playerNameDisplay"></h2>
+                <h2>ELAPSED TIME:</h2>
+                <h2 id="timer">00:00</h2>
+            </div>
+            <div class="buttons">
+                <button id="saveGameButton">SAVE GAME</button>
+                <button id="newGame">New Game</button>
+                <button id="returnToMenu">Return to Menu</button>
+            </div>
+        </div>
+        <div class="right-panel">
+            <div id="gameBoard"></div>
+        </div>
+    </div>
+
+
+    <div class="modal hidden" id="winMessage">
+        <div class="modal-content">
+            <!-- Content will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <div class="modal hidden" id="description">
+        <div class="rule">
+            <h2>Game Description</h2>
+            <h3>Overview</h3>
+            <p>The game is played on a square grid of various sizes, where the goal is to create a continuous
+                circular railway line that reaches every place where the train can travel.</p>
+            <img src="pics/screens/solution.png" alt="Solution example">
+            <h3>Terrain Types</h3>
+            <p>Several different types of terrain tiles are visible on the map at the start of the game:</p>
+            <ul>
+                <li>
+                    <img src="pics/tiles/empty.png" alt="Empty tile">
+                    <span>In this cell, the railway can continue in any of the three directions besides the entry
+                        direction.</span>
+                </li>
+                <li>
+                    <img src="pics/tiles/bridge.png" alt="Bridge tile">
+                    <span>On this tile, the railway can only be built in the straight direction defined by the
+                        bridge.</span>
+                </li>
+
+                <li>
+                    <img src="pics/tiles/oasis.png" alt="Oasis tile">
+                    <span>No railway can be built on this tile.You cannot pass through it.It will not show tile </span>
+
+                </li>
+                <li>
+                    <img src="pics/tiles/mountain.png" alt="Mountain tile">
+                    <span>These tiles have rocks that block two adjacent exits, so the train can only continue by
+                        turning 90°.</span>
+                </li>
+
+            </ul>
+            <h3>Rules</h3>
+            <p>Since we want to save on the materials for the railway network, the railway line cannot cross itself,
+                branch off, or pass through a cell more than once!</p>
+            <button id="closeDescription">Close</button>
+        </div>
+    </div>
+
+
+    <div class="modal hidden" id="leaderboard">
+        <div class="modal-content">
+            <h2>Leaderboard</h2>
+            <table id="leaderboardTable">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Time</th>
+                        <th>Difficulty</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboardBody">
+                    <!-- Content will be dynamically inserted here -->
+                </tbody>
+            </table>
+            <button id="closeLeaderboard">Close</button>
+        </div>
+    </div>
+    <script src="script2.js"></script>
+</body>
+
+</html>
+
+</head>

@@ -1,0 +1,915 @@
+/* Base Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5e9;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    color: #4a4a4a;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Layout Styles */
+.container {
+    padding: 20px;
+}
+
+/* Input Styles */
+.input-box {
+    margin: 20px 0;
+}
+
+.input-box input {
+    width: 300px;
+    padding: 10px;
+    font-size: 18px;
+    border: 2px solid #c2a15f;
+    border-radius: 5px;
+    text-align: center;
+    color: #c2a15f;
+}
+
+/* Difficulty Selection Styles */
+.difficulty {
+    margin: 20px 0;
+    padding: 20px;
+    border: 2px solid #c2a15f;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.difficulty h2 {
+    font-size: 24px;
+    color: #c2a15f;
+    margin-bottom: 20px;
+}
+
+.difficulty button {
+    width: 100px;
+    padding: 10px;
+    margin: 10px;
+    font-size: 18px;
+    border: 2px solid #c2a15f;
+    border-radius: 5px;
+    background-color: #f5f5e9;
+    color: #c2a15f;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.difficulty button:hover {
+    background-color: #e6d5b8;
+    transform: scale(1.05);
+}
+
+.difficulty button.selected {
+    color: white;
+    background-color: #995e11;
+}
+
+/* Button Styles */
+.buttons {
+    margin: 20px 0;
+}
+
+.buttons button {
+    width: 150px;
+    padding: 10px;
+    background-color: #d9e8d4;
+    margin: 10px;
+    font-size: 18px;
+    border: 2px solid #b98927;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.buttons button:hover {
+    transform: scale(1.05);
+}
+
+.buttons .start-game {
+    background-color: #995e11;
+    color: #ffffff;
+}
+.buttons .start-game:hover {
+    background-color: #c8d7c3;
+    color:#000
+}
+
+
+.buttons button:hover {
+    background-color: #995e11;
+    color: #ffffff;
+}
+
+/* Game Layout Styles */
+#game {
+    display: flex;
+    width: 100%;
+    flex-wrap: nowrap;
+}
+
+.left-panel {
+    width: 33%;
+    padding: 10px;
+    background-color: #f9f9f2;
+    border-right: 2px solid #c2a15f;
+    text-align: center;
+}
+
+.right-panel {
+    width: 77%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Game Board Styles */
+#gameBoard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1px auto;
+    padding: 10px;
+    background-color: #864c16;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.board-row {
+    display: flex;
+}
+
+.board-cell {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    border: 1px solid #c2a15f;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.board-cell:hover {
+    transform: scale(1.05);
+    z-index: 1;
+}
+
+.board-cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.rail-piece {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+}
+
+.base-tile, .rail-tile {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.rail-tile {
+    z-index: 1;
+}
+
+
+
+
+/* Modal Styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #f5f5e9;
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 800px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border: 3px solid #c2a15f;
+    animation: modalPopup 0.3s ease-out;
+}
+
+/* Leaderboard Styles */
+#leaderboardTable {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 20px 0;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#leaderboardTable th,
+#leaderboardTable td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #e6d5b8;
+}
+
+#leaderboardTable th {
+    background-color: #c2a15f;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.1em;
+}
+
+/* Win Message Styles */
+#winMessage .modal-content {
+    text-align: center;
+    max-width: 600px;
+}
+
+#winMessage h2 {
+    color: #995e11;
+    margin-bottom: 20px;
+}
+
+#winMessage p {
+    font-size: 1.2em;
+    margin: 20px 0;
+}
+
+/* Animation Styles */
+@keyframes modalPopup {
+    0% {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes railPlacement {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes celebration {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.rail-piece.new {
+    animation: railPlacement 0.3s ease-out;
+}
+
+.win-animation {
+    animation: celebration 0.5s ease-in-out;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    #game {
+        flex-direction: column;
+    }
+
+    .left-panel,
+    .right-panel {
+        width: 100%;
+        border-right: none;
+    }
+
+    .board-cell {
+        width: 40px;
+        height: 40px;
+    }
+
+    .input-box input {
+        width: 80%;
+    }
+
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+        margin: 10px;
+    }
+
+    #leaderboardTable th {
+        font-size: 0.9em;
+        padding: 10px;
+    }
+
+    #leaderboardTable tbody td {
+        font-size: 0.9em;
+        padding: 8px;
+    }
+
+    #closeLeaderboard,
+    #winMessage button {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+}
+
+/* Error Message Styles */
+.error {
+    color: #ff0000;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* Scrollbar Styling */
+.modal-content::-webkit-scrollbar {
+    width: 10px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: #f5f5e9;
+    border-radius: 5px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: #c2a15f;
+    border-radius: 5px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: #995e11;
+}
+.continue-game-button {
+
+    background-color: #d9e8d4;
+    color: #4a4a4a;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 20px 0;
+    width: 300px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: 2px solid #c2a15f;
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.continue-game-button:hover {
+    background-color: #995e11;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    color: WHITE;
+}
+
+#continueSavedGameContainer {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+/* Description Modal Styles */
+.rule {
+    background-color: #f5f5e9;
+    color: #4a4a4a;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 700px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 5px 15px rgba(194, 161, 95, 0.3);
+    border: 3px solid #c2a15f;
+}
+
+.rule h2 {
+    color: #995e11;
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    border-bottom: 3px solid #c2a15f;
+    padding-bottom: 15px;
+}
+
+.rule h3 {
+    color: #864c16;
+    font-size: 1.4em;
+    margin: 25px 0 15px 0;
+    border-left: 4px solid #c2a15f;
+    padding-left: 10px;
+}
+
+.rule p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin: 15px 0;
+    text-align: justify;
+    color: #4a4a4a;
+}
+
+.rule ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.rule li {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    border: 2px solid #c2a15f;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.rule li:hover {
+    transform: translateX(10px);
+    background-color: #faf6f0;
+}
+
+.rule li img {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+    border-radius: 8px;
+    border: 2px solid #c2a15f;
+    padding: 5px;
+    background-color: #fff;
+}
+
+.rule img {
+    display: block;
+    margin: 20px auto;
+    border-radius: 10px;
+    border: 2px solid #c2a15f;
+    transition: transform 0.3s ease;
+    max-width: 90%;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.rule img:hover {
+    transform: scale(1.05);
+}
+
+/* Enhanced Win Message Styles */
+#winMessage .modal-content {
+    text-align: center;
+    max-width: 700px;
+    background: linear-gradient(145deg, #f5f5e9, #ffffff);
+    border: 4px solid #c2a15f;
+    padding: 40px;
+}
+
+#winMessage h2 {
+    color: #995e11;
+    font-size: 2.5em;
+    margin-bottom: 25px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    animation: celebrationPulse 2s infinite;
+}
+
+#winMessage p {
+    font-size: 1.4em;
+    color: #4a4a4a;
+    margin: 25px 0;
+    line-height: 1.6;
+}
+
+/* Win Message Leaderboard Styles */
+#winLeaderboard {
+    margin: 30px 0;
+    max-height: 300px;
+    overflow-y: auto;
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#winLeaderboard table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 5px;
+}
+
+#winLeaderboard th {
+    background-color: #c2a15f;
+    color: white;
+    padding: 15px;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    border-radius: 8px 8px 0 0;
+}
+
+#winLeaderboard td {
+    padding: 12px;
+    background-color: #faf6f0;
+    border-bottom: 2px solid #e6d5b8;
+}
+
+#winLeaderboard tr:nth-child(even) td {
+    background-color: #f5f5e9;
+}
+
+#winLeaderboard tr[data-rank="1"] td {
+    background-color: rgba(255, 215, 0, 0.15);
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+#winMessage button {
+    background-color: #995e11;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#winMessage button:hover {
+    background-color: #864c16;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* New Animation for Win Message */
+@keyframes celebrationPulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Enhanced Scrollbar Styling */
+.rule::-webkit-scrollbar,
+#winLeaderboard::-webkit-scrollbar {
+    width: 10px;
+}
+
+.rule::-webkit-scrollbar-track,
+#winLeaderboard::-webkit-scrollbar-track {
+    background: #f5f5e9;
+    border-radius: 5px;
+}
+
+.rule::-webkit-scrollbar-thumb,
+#winLeaderboard::-webkit-scrollbar-thumb {
+    background: #c2a15f;
+    border-radius: 5px;
+    border: 2px solid #f5f5e9;
+}
+
+.rule::-webkit-scrollbar-thumb:hover,
+#winLeaderboard::-webkit-scrollbar-thumb:hover {
+    background: #995e11;
+}
+
+/* Responsive adjustments for new elements */
+@media (max-width: 768px) {
+    .continue-game-button {
+        width: 90%;
+        font-size: 16px;
+        padding: 12px 20px;
+    }
+
+    #winMessage .modal-content {
+        padding: 20px;
+    }
+
+    #winMessage h2 {
+        font-size: 2em;
+    }
+
+    #winMessage p {
+        font-size: 1.2em;
+    }
+
+    #winLeaderboard {
+        max-height: 250px;
+    }
+
+    #winLeaderboard th,
+    #winLeaderboard td {
+        font-size: 0.9em;
+        padding: 10px;
+    }
+}
+
+/* Game Info Display Styles */
+#playerInfo {
+    background: linear-gradient(145deg, #ffffff, #f5f5e9);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 2px solid #c2a15f;
+}
+
+#playerInfo h2 {
+    font-size: 1.6em;
+    color: #995e11;
+    margin: 10px 0;
+    text-transform: uppercase;
+}
+
+#timer,
+#playerNameDisplay {
+    font-size: 2.2em;
+    color: #4a4a4a;
+    font-weight: bold;
+    background-color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 10px 0;
+    border: 2px solid #c2a15f;
+    display: inline-block;
+    min-width: 150px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#gameDifficulty {
+    font-size: 1.4em;
+    color: #995e11;
+    margin: 15px 0;
+    padding: 10px;
+    background-color: #faf6f0;
+    border-radius: 8px;
+    border: 2px solid #c2a15f;
+}
+
+
+
+#saveGameButton:hover,
+#newGame:hover,
+#returnToMenu:hover {
+    background-color: #864c16;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Save Confirmation Animation */
+.save-confirmation {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(76, 175, 80, 0.9);
+    color: white;
+    padding: 20px 40px;
+    border-radius: 30px;
+    font-size: 1.4em;
+    font-weight: bold;
+    animation: fadeInOut 2s ease-in-out;
+    z-index: 1100;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+
+    20% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    80% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+}
+
+/* Game Board Cell Highlight Effect */
+.highlight {
+    animation: cellHighlight 0.3s ease-out;
+}
+
+@keyframes cellHighlight {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(194, 161, 95, 0);
+    }
+
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 20px rgba(194, 161, 95, 0.5);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(194, 161, 95, 0);
+    }
+}
+
+/* Railway Logo Styles */
+#logo {
+    margin: 20px 0;
+    transition: all 0.3s ease;
+}
+
+#logo img {
+    width: 80%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+#logo:hover {
+    transform: scale(1.02);
+}
+
+/* Menu Screen Railway Image Enhancement */
+.railway img {
+    width: 50%;
+    height: auto;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.railway img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Error Message Enhancement */
+.error {
+    color: #ff0000;
+    font-size: 14px;
+    margin-top: 5px;
+    border-radius: 5px;
+    animation: errorShake 0.5s ease-in-out;
+}
+
+@keyframes errorShake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+/* Enhanced Modal Close Button */
+.modal .close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.8em;
+    color: #995e11;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 5px 10px;
+    border-radius: 50%;
+}
+
+.modal .close-button:hover {
+    color: #864c16;
+    background-color: rgba(194, 161, 95, 0.1);
+    transform: rotate(90deg);
+}
+
+/* Additional Responsive Styles */
+@media (max-width: 768px) {
+
+    #timer,
+    #playerNameDisplay {
+        font-size: 1.8em;
+        min-width: 120px;
+        padding: 8px 15px;
+    }
+
+    #playerInfo h2 {
+        font-size: 1.3em;
+    }
+
+    #saveGameButton {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+
+    .railway img {
+        width: 60%;
+    }
+
+    #logo img {
+        width: 100%;
+    }
+
+    .save-confirmation {
+        font-size: 1.2em;
+        padding: 15px 30px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+
+    #gameBoard {
+        border: 1px solid #000;
+        box-shadow: none;
+    }
+
+    .board-cell {
+        border: 1px solid #000;
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    body {
+        background-color: white;
+        color: black;
+    }
+
+    .board-cell {
+        border: 3px solid black;
+    }
+
+    button {
+        border: 3px solid black;
+        color: black;
+        background-color: white;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
